@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT startServerHerokuHelloPython:flaskApp
+web: waitress-serve --port=$PORT backend.startServerHerokuHelloPython:flaskApp
