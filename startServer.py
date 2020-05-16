@@ -21,10 +21,10 @@ def returnCatDetails():
    
 
 
-@flaskApp.route('/') #<path:filename>')
+@flaskApp.route('/')
 def returnMainPage():
 
-   return flask.render_template('../frontend', filename)
+   return flask.render_template('index.html')
 
 
 
