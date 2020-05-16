@@ -1,6 +1,6 @@
 import flask
 
-flaskApp = flask.Flask(__name__, static_folder='frontend/', template_folder='frontend/')
+flaskApp = flask.Flask(__name__, static_folder='../frontend/', template_folder='../frontend/')
 flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
