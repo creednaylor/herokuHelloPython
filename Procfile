@@ -1,1 +1,1 @@
-web: waitress-serve —port=8000 startServerHerokuHelloPython:flaskApp
+web: waitress-serve startServerHerokuHelloPython:flaskApp
