@@ -24,7 +24,6 @@ protobuf==3.11.3
 psutil==5.7.0
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
-PyAutoGUI==0.9.49
 pycodestyle==2.5.0
 PyGetWindow==0.0.8
 PyMsgBox==1.0.7
