@@ -1,6 +1,7 @@
 import flask
 
-flaskApp = flask.Flask(__name__, static_url_path='')
+flaskApp = flask.Flask(__name__, static_folder='frontend')
+# print(flaskApp.static_folder)
 
 @flaskApp.route('/cat')
 def returnCatDetails():
@@ -14,16 +15,16 @@ def returnCatDetails():
 
 
 
-# @flaskApp.route('/') #<path:filename>')
-# def returnMainPage():
+# @flaskApp.route('/<path:fileName>', defaults={'fileName': 'index.html'})
+# def returnMainPage(fileName):
 
-#    return flask.send_from_directory('../frontend', filename)
+#    # print(fileName)
+#    return flask.send_from_directory(flaskApp.static_folder, fileName)
    
 
 
 @flaskApp.route('/')
 def returnMainPage():
-
    return flask.render_template('index.html')
 
 
