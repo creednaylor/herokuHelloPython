@@ -33,7 +33,7 @@ def returnMainPage():
 
 if __name__ == '__main__':
     
-    from waitress import serve
-    serve(flaskApp, host='0.0.0.0', port=8000)
+    import waitress
+    waitress.serve(flaskApp, host='0.0.0.0', port=8000, url_scheme='https')
 
     flaskApp.run()
