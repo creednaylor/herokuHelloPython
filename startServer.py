@@ -1,7 +1,8 @@
 import flask
 
-flaskApp = flask.Flask(__name__, static_folder='frontend')
-# print(flaskApp.static_folder)
+flaskApp = flask.Flask(__name__, static_folder='frontend/', template_folder='frontend/')
+flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
+
 
 @flaskApp.route('/cat')
 def returnCatDetails():
