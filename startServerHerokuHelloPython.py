@@ -34,6 +34,7 @@ def returnMainPage():
 if __name__ == '__main__':
     
     import waitress
-    waitress.serve(flaskApp, host='0.0.0.0', port=8000, url_scheme='https')
+   #  waitress.serve(flaskApp, host='0.0.0.0', port=8000, url_scheme='https')
+    waitress.serve(flaskApp, host='0.0.0.0', port=8000)
 
     flaskApp.run()
