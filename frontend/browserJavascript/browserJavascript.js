@@ -35,8 +35,8 @@ function sendPostRequestFromBrowser(spreadsheetType) {
 
 			// Print received data from server
 			// result.innerHTML = this.responseText;
-			c(this.responseText);
-			console.log('Received data from server')
+			// c(this.responseText);
+			// console.log('Received data from server')
 
 		}
 	};
