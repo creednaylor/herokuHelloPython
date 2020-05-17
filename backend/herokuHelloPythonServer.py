@@ -25,9 +25,7 @@ def datarequests():
 			p('begin rendering...')
 			return render_template('result.html')
 
-		p(requestObj['spreadsheetType'])
-
-		return 'Received data from browser'
+		return 'Received data from browser: {}'.format(requestObj['spreadsheetType'])
 
 
 @flaskApp.route('/')

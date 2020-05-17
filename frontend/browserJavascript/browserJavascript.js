@@ -11,9 +11,9 @@ async function receiveGetResponseFromServer() {
 		}
 	}
 
-	var dataReceivedFromBackend = await sendGetRequestFromBrowser();
+	var dataReceivedFromServer = await sendGetRequestFromBrowser();
 
-	// c(dataReceivedFromBackend);
+	c('Data received from server: ${dataReceivedFromServer}')
 };
 
 
