@@ -1,13 +1,71 @@
-(async function main() {
-  async function getRequestFunction() {
-    try {
-      return (await axios.get('/getrequest')).data
-    } catch(e) {
-      return null;
-    }
-  }
-  
-  var jsonFromBackend = await getRequestFunction();
+function c(textToLogToConsole) {
+	console.log(textToLogToConsole)
+}
 
-  console.log(jsonFromBackend)
-})()
+async function receiveGetResponseFromServer() {
+	async function sendGetRequestFromBrowser() {
+		try {
+			return (await axios.get('/datarequests')).data
+		} catch (e) {
+			return null;
+		}
+	}
+
+	var dataReceivedFromBackend = await sendGetRequestFromBrowser();
+
+	// c(dataReceivedFromBackend);
+};
+
+
+function sendPostRequestFromBrowser(spreadsheetType) {
+
+	// Creating a XHR object
+	let xhr = new XMLHttpRequest();
+	let url = '/datarequests';
+
+	// open a connection
+	xhr.open('POST', url, true);
+
+	// Set the request header i.e. which type of content you are sending
+	xhr.setRequestHeader('Content-Type', 'application/json');
+
+	// Create a state change callback
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+
+			// Print received data from server
+			// result.innerHTML = this.responseText;
+			c(this.responseText);
+			console.log('Received data from server')
+
+		}
+	};
+
+	// Converting JSON data to string
+	var spreadSheetTypePostData = JSON.stringify({ "spreadsheetType": spreadsheetType });
+
+	// Sending data with the request
+	xhr.send(spreadSheetTypePostData);
+}
+
+
+
+
+
+function publicClickFunction() {
+	sendPostRequestFromBrowser('public');
+}
+
+
+function privateClickFunction() {
+	receiveGetResponseFromServer()
+	sendPostRequestFromBrowser('private');
+}
+
+function reconcileClickFunction() {
+
+}
+
+
+
+

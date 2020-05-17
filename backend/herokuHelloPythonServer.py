@@ -1,37 +1,42 @@
-import flask
+from flask import Flask, request, render_template
+from pprint import pprint as p
 
-flaskApp = flask.Flask(__name__, static_folder='../frontend/', template_folder='../frontend/')
+flaskApp = Flask(__name__, static_folder='../frontend/', template_folder='../frontend/htmlTemplates')
 flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
-@flaskApp.route('/getrequest', methods=['GET'])
-def respondToGetRequest():
+@flaskApp.route('/datarequests', methods=['GET', 'POST'])
+def datarequests():
 
-   jsonToSendToFrontend = {
-        'cat eyes': 'yellow',
-        'collar': 'red'
-    }
-   
-   return str(jsonToSendToFrontend)
+	if request.method == 'GET':
 
- 
+		dataToSendToFrontend = {
+			'cat eyes': 'yellow',
+			'collar': 'red'
+		}
 
-@flaskApp.route('/postrequest', methods=['POST'])
-def respondToPostRequest():
+		return str(dataToSendToFrontend)
 
-   console.log(request)
+	if request.method == 'POST':
+		requestObj = request.json
 
+		if requestObj['spreadsheetType'] == 'public':
+			p('begin rendering...')
+			return render_template('result.html')
+
+		p(requestObj['spreadsheetType'])
+
+		return 'Received data from browser'
 
 
 @flaskApp.route('/')
 def returnMainPage():
-   return flask.render_template('index.html')
-
+	return render_template('index.html')
 
 
 
 if __name__ == '__main__':
-    
+
     import waitress
     waitress.serve(flaskApp, host='0.0.0.0', port=8000)
 
