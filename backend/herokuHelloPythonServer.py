@@ -9,7 +9,6 @@ flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
 def datarequests():
 
 	if request.method == 'GET':
-
 		dataToSendToFrontend = {
 			'cat eyes': 'yellow',
 			'collar': 'red'
@@ -25,7 +24,7 @@ def datarequests():
 			p('begin rendering...')
 			return render_template('result.html')
 
-		return 'Received data from browser: {}'.format(requestObj['spreadsheetType'])
+		return 'Received data from browser from POST request: {}'.format(requestObj['spreadsheetType'])
 
 
 @flaskApp.route('/')

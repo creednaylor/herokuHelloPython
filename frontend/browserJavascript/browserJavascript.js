@@ -13,7 +13,7 @@ async function receiveGetResponseFromServer() {
 
 	var dataReceivedFromServer = await sendGetRequestFromBrowser();
 
-	c(`Data received from server: ${dataReceivedFromServer}`)
+	c(`Received data from server from GET request: ${dataReceivedFromServer}`)
 };
 
 
@@ -35,7 +35,7 @@ function sendPostRequestFromBrowser(spreadsheetType) {
 
 			// Print received data from server
 			// result.innerHTML = this.responseText;
-			cl('Received data from server: ${this.responseText}')
+			c(`Received response from server on POST request: ${this.responseText}`)
 
 		}
 	};
