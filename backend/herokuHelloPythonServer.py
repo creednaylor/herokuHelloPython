@@ -4,25 +4,17 @@ flaskApp = flask.Flask(__name__, static_folder='../frontend/', template_folder='
 flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
-@flaskApp.route('/cat')
+@flaskApp.route('/getrequest')
 def returnCatDetails():
 
-   jsonToReturn = {
+   jsonToSendToFrontend = {
         'cat eyes': 'yellow',
         'collar': 'red'
     }
    
-   return str(jsonToReturn)
+   return str(jsonToSendToFrontend)
 
-
-
-# @flaskApp.route('/<path:fileName>', defaults={'fileName': 'index.html'})
-# def returnMainPage(fileName):
-
-#    # print(fileName)
-#    return flask.send_from_directory(flaskApp.static_folder, fileName)
-   
-
+ 
 
 @flaskApp.route('/')
 def returnMainPage():
@@ -34,7 +26,6 @@ def returnMainPage():
 if __name__ == '__main__':
     
     import waitress
-   #  waitress.serve(flaskApp, host='0.0.0.0', port=8000, url_scheme='https')
     waitress.serve(flaskApp, host='0.0.0.0', port=8000)
 
     flaskApp.run()

@@ -1,13 +1,13 @@
 (async function main() {
-  async function getCatData() {
+  async function getRequestFunction() {
     try {
-      return (await axios.get('/cat')).data
+      return (await axios.get('/getrequest')).data
     } catch(e) {
       return null;
     }
   }
   
-  var cat = await getCatData();
+  var jsonFromBackend = await getRequestFunction();
 
-  console.log(cat)
+  console.log(jsonFromBackend)
 })()
