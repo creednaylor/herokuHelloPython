@@ -4,8 +4,8 @@ flaskApp = flask.Flask(__name__, static_folder='../frontend/', template_folder='
 flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
 
 
-@flaskApp.route('/getrequest')
-def returnCatDetails():
+@flaskApp.route('/getrequest', methods=['GET'])
+def respondToGetRequest():
 
    jsonToSendToFrontend = {
         'cat eyes': 'yellow',
@@ -15,6 +15,13 @@ def returnCatDetails():
    return str(jsonToSendToFrontend)
 
  
+
+@flaskApp.route('/postrequest', methods=['POST'])
+def respondToPostRequest():
+
+   console.log(request)
+
+
 
 @flaskApp.route('/')
 def returnMainPage():
