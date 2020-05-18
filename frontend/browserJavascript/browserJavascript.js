@@ -32,22 +32,16 @@ function sendPostRequestFromBrowser(spreadsheetType) {
 
 	// Create a state change callback
 	xhr.onreadystatechange = function () {
+
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			// Print received data from server
 			c(`Received response from server on POST request: ${this.responseText}`)
 
-
 			if (xhr.getResponseHeader('content-type').indexOf('text/html') >= 0) { 
-				// result.innerHTML = this.responseText;
-				c('here')
 				var parserObj = new DOMParser();
 				var responseDocumentObj = parserObj.parseFromString(this.responseText, 'text/html');
 				document.body.innerHTML = responseDocumentObj.body.innerHTML
-
 			}
-			
-			
-
 		}
 	};
 

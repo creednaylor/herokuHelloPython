@@ -22,10 +22,9 @@ def datarequests():
 		requestObj = request.json
 
 		if requestObj['spreadsheetType'] == 'public':
-			return render_template('result.html')
-
+			return render_template('reconcilePublic.html')
 		else:
-			return Response(json.dumps(requestObj), mimetype='application/json')
+			return render_template('reconcilePrivate.html')
 
 
 @flaskApp.route('/')
