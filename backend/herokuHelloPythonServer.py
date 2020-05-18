@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Response
+import json
 from pprint import pprint as p
 
 flaskApp = Flask(__name__, static_folder='../frontend/', template_folder='../frontend/htmlTemplates')
@@ -14,22 +15,27 @@ def datarequests():
 			'collar': 'red'
 		}
 
-		return str(dataToSendToFrontend)
+		return Response(json.dumps(dataToSendToFrontend), mimetype='application/json')
 
 
 	if request.method == 'POST':
 		requestObj = request.json
 
 		if requestObj['spreadsheetType'] == 'public':
-			p('begin rendering...')
 			return render_template('result.html')
 
-		return 'Received data from browser from POST request: {}'.format(requestObj['spreadsheetType'])
+		else:
+			return Response(json.dumps(requestObj), mimetype='application/json')
 
 
 @flaskApp.route('/')
 def returnMainPage():
 	return render_template('index.html')
+	# return """	<p>Spreadsheet to reconcile:</p>
+	# 			<button onclick="publicClickFunction()">Public</button>
+	# 			<button onclick="privateClickFunction()">Private</button>
+	# 			<p></p>
+	# 			<img src="./frontend/assets/regal-cat.jpeg" alt="regal cat" />"""
 
 
 
