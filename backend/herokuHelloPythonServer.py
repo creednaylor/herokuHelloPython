@@ -1,6 +1,9 @@
-from flask import Flask, request, render_template, Response
 import json
+from flask import Flask, request, render_template, Response
 from pprint import pprint as p
+import waitress
+
+
 
 flaskApp = Flask(__name__, static_folder='../frontend/', template_folder='../frontend/htmlTemplates')
 flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -40,7 +43,7 @@ def returnMainPage():
 
 if __name__ == '__main__':
 
-    import waitress
+    
     waitress.serve(flaskApp, host='0.0.0.0', port=8000)
 
     flaskApp.run()
